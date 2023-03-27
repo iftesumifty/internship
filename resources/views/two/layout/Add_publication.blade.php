@@ -1,4 +1,4 @@
-@include('two.layout.another')
+@extends('two.layout.backend1')
  <!doctype html>
 <html lang="en">
   <head>

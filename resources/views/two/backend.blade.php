@@ -8,6 +8,8 @@
         <h1 class="h2">Dashboard</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
 <a  href="{{route('dashboard')}}">User</a>
+<a  href="{{route('message')}}">messages</a>
+
 
        
 

@@ -64,18 +64,32 @@
             <i class="bx bx-user nav_icon"></i>
             <span data-feather="file-text " class="align-text-bottom"> user</span>
             </a>
-          </li>
-
-
-
-       <a href="{{route('message')}}" class="nav_link">
-              <i class="bx bx-folder nav_1icon"></i>
-              <span data-feather="file-text " class="align-text-bottom"> message</span>
-            </a> 
-            <a href="#" class="nav_link">
-              <i class="bx bx-bar-chart-alt-2 nav_1icon"></i>
-              <span class="nav_name">Stats</span>
+            <a class="nav-link" href="{{route('order1')}} ">
+            <i class="bx bx-user nav_icon"></i>
+            <span data-feather="file-text " class="align-text-bottom"> order</span>
             </a>
+            <a class="nav-link" href="{{route('order')}} ">
+            <i class="bx bx-user nav_icon"></i>
+            <span data-feather="file-text " class="align-text-bottom"> suborder</span>
+            </a>
+          </li>
+         
+
+
+       
+            <a href="{{route('return')}}" class="nav_link">
+              <i class="bx bx-folder nav_1icon"></i>
+              <span data-feather="file-text " class="align-text-bottom"> Return book</span>
+            </a> 
+            <a href="{{route('ADD_PUBLICATION')}} " class="nav_link">
+              <i class="bx bx-bar-chart-alt-2 nav_1icon"></i>
+              <span data-feather="file-text " class="align-text-bottom"> purchases </span>
+            </a>
+            <a href="{{route('ch')}} " class="nav_link">
+              <i class="bx bx-bar-chart-alt-2 nav_1icon"></i>
+              <span data-feather="file-text " class="align-text-bottom"> choice publication</span>
+            </a>
+
         
          
         <!-- <a href="#" class="nav_link">

@@ -53,8 +53,8 @@
       }
 
       .header {
-        width: 95%;
-        background: #000;
+         width: 95%; 
+        background:cadetblue; 
         height: var(--header-height);
         position: fixed;
         top: 0;
@@ -64,8 +64,8 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 1rem;
-        background-color: var(--white-color);
-        z-index: var(--z-fixed);
+        /* background-color: var(--white-color); */
+        /* z-index: var(--z-fixed); */
         transition: 0.5s;
       }
 
@@ -95,11 +95,11 @@
         max-width: 12rem; 
          /* width: var(--nav-width);  */
         height: 150vh;
-        background-color: var(--first-color);
+        /* background-color: var(--first-color); */
        /* padding: 0.5rem 1rem 0 0;  */
         transition: 0.5s; 
          z-index: var(--z-fixed); 
-         
+         /* background-color: #000; */
          /* overflow-y: scroll; */
         
       }
@@ -118,7 +118,7 @@
         display: flex;
         flex-direction: row;
          justify-content: space-between; 
-        
+        /* background-color: #000; */
       }
 
       .nav_logo,
@@ -150,14 +150,14 @@
       }
 
       .nav_logo-name {
-        color: var(--white-color);
+        /* color: var(--white-color); */
         font-weight: 100;
         font-size: 1.2rem;
+/* background-color: #000; */
        
       }
       .align-text-bottom{
-        color: aqua;
-        /* margin-left: 3rem; */
+        color: black;
       }
 
       .nav_link {
@@ -174,7 +174,7 @@
         color: var(--white-color);
         /* overflow-y: scroll;
           overflow: hidden; */
-
+/* background-color: #000; */
       } 
 
       .nav_icon {
@@ -243,6 +243,7 @@
         .header {
           height: calc(var(--header-height) + 1rem);
           padding: 0 2rem 0 calc(var(--nav-width) + 2rem);
+          color: #000;
         }
 
         .header_img {
@@ -264,6 +265,7 @@
           padding: 1rem 1rem 0 0; 
           /* overflow-y: scroll;
           overflow: hidden; */
+          background-color:cadetblue;
         }
         .nav-item{
 text-decoration-color: black;
@@ -287,7 +289,7 @@ text-decoration-color: black;
     </style>
   </head>
   <body id="body-pd">
-    <header class="header bg-danger" id="header">
+    <header class="header " id="header">
       <div class="header_toggle">
         <i class="bx bx-menu" id="header-toggle">"Tooday a reader,tomorrow a leader"    </i>
         
