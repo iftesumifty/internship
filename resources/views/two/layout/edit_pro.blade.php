@@ -6,12 +6,17 @@
   @csrf
  @method('PUT')
  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Book_Name</label></label>
-    <input type="text" class="form-control" name="Book_Name" id="exampleInputPassword1" placeholder="enter your name"   value="{{$product->Book_Name}}" >
+    <label for="exampleInputPassword1" class="form-label">Book_Category</label>
+    <input type="text" class="form-control" name="name" id="exampleInputPassword1" placeholder="enter your name"   value="{{$product->name}}"  >
   </div>
+  
 
-        
-
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">sub_Book_Category</label>
+    <input type="text" class="form-control" name="Book_Name" id="exampleInputPassword1" placeholder="enter your name"   value="{{$product->Book_Name}}"  >
+  </div>
+  
+ 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Writer_Name</label>
     <input type="text" class="form-control" name="Writer_Name" id="exampleInputPassword1" placeholder="enter your name"   value="{{$product->Writer_Name}}"  >
@@ -27,10 +32,6 @@
     <input type="integer" class="form-control" name="Available" id="exampleInputPassword1" placeholder="enter your name"   value="{{$product->Available}}" >
   </div>
 
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">price</label>
-    <input type="integer" class="form-control" name="price" id="exampleInputPassword1" placeholder="enter your name"   value="{{$product->price}}"  >
-  </div>
   
 
     

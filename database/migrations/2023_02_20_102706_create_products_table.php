@@ -15,13 +15,13 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('Book_Naaame');
+           
             $table->string('name');
             $table->string('Book_Name');
             $table->string('Writer_Name');
             $table->string('Publisher_Name');
             $table->integer('Available');
-            $table->integer('price');
+            
             $table->timestamps();
         });
     }

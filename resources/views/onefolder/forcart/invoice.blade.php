@@ -46,6 +46,10 @@ $value= $data->price* $data->qty;
 <h1>grand total= {{Cart::subtotal()}}</h1>
 <h1> Total with Tax(5%)={{Cart::total()}}</h1>
 
+<button type="submit" class="btn btn-primary">Submit</button><br><br><br><br>
+
+
+
 <form action="{{route('placeorder')}}" method='post'class="container" >
 
 
@@ -83,8 +87,6 @@ $value= $data->price* $data->qty;
   </div><br>
 
   <button type="submit" class="btn btn-primary">Submit</button>
-  
- 
   
 </form>
 

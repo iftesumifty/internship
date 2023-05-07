@@ -208,8 +208,10 @@
                     </div>
                 </div>
             </div>
+            
         </div>
-        </section> <br><br><br>
+        
+        </section> <br><br><br>  
 
     <section id="special" class="">
         <div class="container">
@@ -231,9 +233,9 @@
 
 
                     <div class="text-center">
-                        <p class="text-capitalize mt-3 mb-1">BE Ready</p>
-                        <span class="fw-bold d-block">4400 Tk</span>
-                        <a href="{{route('book')}}" class="btn btn-primary mt-3">Add to Cart</a>
+                        <p class="text-capitalize mt-3 mb-1">Search Book</p>
+                        <span class="fw-bold d-block">Book With Self No</span>
+                        <a href="{{route('book')}}" class="btn btn-primary mt-3">Book list</a>
                     </div>
                 </div>
 
@@ -250,7 +252,7 @@
                     </div>
                     <div class="text-center">
                         <p class="text-capitalize mt-3 mb-1">return book</p>
-                        <span class="fw-bold d-block">3500 Tk</span>
+                        <span class="fw-bold d-block">Record all return info</span>
                         <a href="{{route('s_returninfo')}}" class="btn btn-primary mt-3">Return</a>
                     </div>
                 </div>
@@ -265,23 +267,39 @@
                     <div class="text-center">
                         <p class="text-capitalize mt-3 mb-1">New Book Collection</p>
                         <span class="fw-bold d-block">20% OFF</span>
-                        <a href="{{route('userchoice')}}" class="btn btn-primary mt-3">Your Choice</a>
+                        <a href="{{route('userchoice')}}" class="btn btn-primary mt-3">Order</a>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-lg-4 col-xl-3 p-2">
                     <div class="special-img position-relative overflow-hidden">
-                        <img src="./public/asset/frontend/imagess/w4.webp" height="300px" width="260px" class="w-100">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrJLYuqnLlxzMNOqEIlInNJg68kS-f2vEdeK8AzifUrr6Rt6OkPuZ78iP0F2HAz_LaAH8&usqp=CAU" height="300px" width="260px" class="w-100">
                         <span class="position-absolute d-flex align-items-center justify-content-center text-primary fs-4">
                             <i class="fas fa-heart"></i>
                         </span>
                     </div>
                     <div class="text-center">
-                        <p class="text-capitalize mt-3 mb-1">Smart Watch</p>
-                        <span class="fw-bold d-block">5500 Tk</span>
-                        <a href="./Frontend/cart.php" class="btn btn-primary mt-3">Add to Cart</a>
+                        <p class="text-capitalize mt-3 mb-1">Make Life Easier with Online Payments</p>
+                        <span class="fw-bold d-block"></span>
+                        <a href="{{route('exampleEasyCheckout')}}" class="btn btn-primary mt-3">Pay Fast</a>
                     </div>
                 </div>
+
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                    <div class="special-img position-relative overflow-hidden">
+                        <img src="https://thumbs.dreamstime.com/b/penalty-notice-write-notebook-text-concept-88641917.jpg" height="300px" width="260px" class="w-100">
+                        <span class="position-absolute d-flex align-items-center justify-content-center text-primary fs-4">
+                            <i class="fas fa-heart"></i>
+                        </span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-capitalize mt-3 mb-1">Pay for Late Submit</p>
+                        <span class="fw-bold d-block">Count Fines</span>
+                        <a href="{{route('fine')}}" class="btn btn-primary mt-3">Penalty</a>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </section>

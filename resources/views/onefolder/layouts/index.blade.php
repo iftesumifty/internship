@@ -1,5 +1,5 @@
-@extends('onefolder.master')
-@section('content')
+@extends('onefolder.master1')
+@section('content1')
 
 
 <!doctype html>
@@ -203,6 +203,7 @@
             </div>
         </div>
     </section> <br><br><br>
+    
 <section id = "special" class = "">
         <div class = "container">
             <div class = "title text-center py-6">
@@ -218,9 +219,9 @@
                         </span>
                     </div>
                     <div class = "text-center">
-                        <p class = "text-capitalize mt-3 mb-1">Order Here</p>
-                        <span class = "fw-bold d-block">Please Place Order </span>
-                        <a href = "{{route('admin_login')}}" class = "btn btn-primary mt-3">Order Book</a>
+                        <p class = "text-capitalize mt-3 mb-1">Search Book</p>
+                        <span class = "fw-bold d-block">Book With Self No</span>
+                        <a href = "{{route('admin_login')}}" class = "btn btn-primary mt-3">Book list</a>
                     </div>
                 </div>
 
@@ -248,23 +249,38 @@
                     <div class = "text-center">
                         <p class = "text-capitalize mt-3 mb-1">New Book Collection</p>
                         <span class = "fw-bold d-block">20% OFF</span>
-                        <a href = "{{route('admin_login')}}" class = "btn btn-primary mt-3">Your Choice </a>
+                        <a href = "{{route('admin_login')}}" class = "btn btn-primary mt-3">Order </a>
                     </div>
                 </div>
 
                 <div class = "col-md-6 col-lg-4 col-xl-3 p-2">
                     <div class = "special-img position-relative overflow-hidden">
-                        <img src = "./public/asset/frontend/imagess/w4.webp"height="300px" width="260px" class = "w-100">
+                        <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrJLYuqnLlxzMNOqEIlInNJg68kS-f2vEdeK8AzifUrr6Rt6OkPuZ78iP0F2HAz_LaAH8&usqp=CAU"height="300px" width="260px" class = "w-100">
                         <span class = "position-absolute d-flex align-items-center justify-content-center text-primary fs-4">
                             <i class = "fas fa-heart"></i>
                         </span>
                     </div>
                     <div class = "text-center">
-                        <p class = "text-capitalize mt-3 mb-1">Smart Watch</p>
-                        <span class = "fw-bold d-block">5500 Tk</span>
-                        <a href = "{{route('admin_login')}}" class = "btn btn-primary mt-3">Add to Cart</a>
+                        <p class = "text-capitalize mt-3 mb-1">Make Life Easier with Online Payments</p>
+                        <span class = "fw-bold d-block"></span>
+                        <a href = "{{route('admin_login')}}" class = "btn btn-primary mt-3">Pay Fast</a>
                     </div>
                 </div>
+
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                    <div class="special-img position-relative overflow-hidden">
+                        <img src="https://thumbs.dreamstime.com/b/penalty-notice-write-notebook-text-concept-88641917.jpg" height="300px" width="260px" class="w-100">
+                        <span class="position-absolute d-flex align-items-center justify-content-center text-primary fs-4">
+                            <i class="fas fa-heart"></i>
+                        </span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-capitalize mt-3 mb-1">Pay for Late Submit</p>
+                        <span class="fw-bold d-block">Count Fines</span>
+                        <a href="{{route('admin_login')}}" class="btn btn-primary mt-3">Penalty</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

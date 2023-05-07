@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\book;
+use App\Models\category;
 use App\Models\choice;
+use App\Models\fine;
 use App\Models\order;
+use App\Models\order11;
 use App\Models\product;
 use App\Models\product1;
 use App\Models\re;
 use App\Models\re1;
+use App\Models\subcategory;
 use App\Models\suborder;
 use App\Models\User;
 use Cart;
@@ -30,6 +34,22 @@ class FrontendController extends Controller
 
 
 {
+
+    //frontend fine
+    public function fine()
+    {
+        $fines=fine::all();
+        return view('onefolder.layouts.fine',compact('fines'));
+    }
+
+
+    //frontend view
+    public function view()
+    {
+        
+        return view('onefolder.product1view.view');
+    }
+
 
 
     public function logout(Request $request)
@@ -75,37 +95,19 @@ class FrontendController extends Controller
         return view('onefolder.forcart.add',compact('re'));
     }
 
-    public function cart_list()
-
-    {
-      $Carts = Cart::content();
-        return view('onefolder.forcart.check',compact('Carts'));
-    }
-    //for add cart
-    public function cart_add($id)
-
-    {
-        $re=re::find($id);
-       $cart_add=Cart::add([
-
-        'id' => $re ->id,
-        'name' => $re ->book_name ,
-         'qty' => 1,
-          'price' =>$re-> price, 
-         'weight' => 1, 
-         'options' => ['size' => 'large']]);
-
-         return redirect()->back();
-
-    }
+    
     
     
 
     public function book()
 
-    {$res=re::all();
+    {
+        // $res=re::all();
         $books = book::all();
-        return view('onefolder.twofolder.book', compact('res'));
+$categories=category::all();
+$subcategories=subcategory::all();
+$product1s=product1::all();
+        return view('onefolder.twofolder.book', compact('categories','subcategories','product1s'));
     }
     public function flor()
 
@@ -123,12 +125,7 @@ class FrontendController extends Controller
         return view('sreturninfo.s_returninfo',compact('re1s'));
     }
 
-    public function checkout()
-
-    {
-        $Carts = Cart::content();
-        return view('onefolder.forcart.invoice',compact('Carts'));
-    }
+   
 
     //for placeorder
     public function placeorder(Request $request)
@@ -138,11 +135,11 @@ class FrontendController extends Controller
        // $subtotal =Cart::subtotal();
        $total =Cart::total();
        
-       $order =order::create([
+       $order11 =order11::create([
 
            // 'user_id'=> $request->id,
             'name' =>  $request->name,
-            'Book name' => $request->name1,
+           
             'email' =>  $request->email,
            
             
@@ -155,7 +152,7 @@ class FrontendController extends Controller
         foreach($Carts as $key => $data){
            
             suborder::create([
-             'order_id'=>$order->id,
+             'order_id'=>$order11->id,
              'pid'=>$data->id ,
              'name'=>$data->name ,
              'price'=> $data->price,
@@ -163,9 +160,14 @@ class FrontendController extends Controller
              'subtotal'=>$data->qty*$data->price 
             ]);
             
+            $choice = choice::where('id',$data->id)->first();
+                $choice_quantity = $choice->available -  $data->qty;
+                $choice->update([
+                    'available'=>$choice_quantity
+                ]);
         }
         Cart::destroy();
-        return redirect()->route('index');
+        return redirect()->route('view')->with('message'," Order Successful");
     }
     public function thnk()
 
@@ -184,9 +186,9 @@ class FrontendController extends Controller
 
     { 
         // $re = re::find($id);
-         $choices=choice::find($id);
+         $choice=choice::find($id);
         
-        return view('onefolder.userchoice.detail',compact('choices'));
+        return view('onefolder.userchoice.detail',compact('choice'));
     }
 
  public function buy()
@@ -215,13 +217,21 @@ class FrontendController extends Controller
         'id' => $choice ->id,
         'name' => $choice ->name ,
          'qty' => 1,
-          'price1' =>$choice-> price1, 
+          'price' =>$choice-> price, 
          'weight' => 1, 
          'options' => ['size' => 'large']]);
 
          return redirect()->back();
 
     }
-    
+    public function checkout1()
+
+    {
+        $Carts = Cart::content();
+         return view('onefolder.userchoice.invoice',compact('Carts'));
+       
+    }
+
+   
 
 }

@@ -147,6 +147,9 @@ $(document).ready( function () {
   
 </html>
 
+<div class="" style="text-align: center;">
+<a href="{{route('view')}}">Back home page</a>
+</div><br>
 
 
 

@@ -27,10 +27,10 @@
 <td>{{$data1->id}}</td>
       <td>{{$data1->name}}</td>
      
-      <td>{{$data1->price1}}</td>
+      <td>{{$data1->price}}</td>
 
       @php
-$value= $data1->price1* $data1->qty;
+$value= $data1->price* $data1->qty;
 
      @endphp
 <td>{{$value}}</td> 
@@ -47,8 +47,15 @@ $value= $data1->price1* $data1->qty;
   </thead>
 </table>   <br>
 <h1>grand total= {{cart::subtotal()}}</h1>
-<h1> Total with Tax(5%)={{cart::total()}}</h1>
-<a href="{{route('checkout')}}"class="btn btn-dark">checkout</a><br><br><br>
+<h1> Total with Tax(10%)={{cart::total()}}</h1>
+<a href="{{route('checkout1')}}"class="btn btn-dark">checkout</a><br><br><br>
+
+
+
+<div class="" style="text-align: center;">
+<a href="{{route('view')}}">Back home page</a>
+</div><br>
+
 
 
 @endsection

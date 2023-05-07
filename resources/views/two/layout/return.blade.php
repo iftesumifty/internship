@@ -14,11 +14,11 @@
   <body >
   
   
-  <main class="col-md-10 ms-sm-auto col-lg-60 px-md-90">
+  <!-- <main class="col-md-10 ms-sm-auto col-lg-60 px-md-90"> -->
   
   <div style="margin-left: 2rem; margin-top:7 rem;" > 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Add return info
+  Add borrow info
 </button>
 
 <!-- Modal -->

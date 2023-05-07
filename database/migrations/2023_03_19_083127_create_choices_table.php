@@ -19,7 +19,8 @@ class CreateChoicesTable extends Migration
             
             $table->string('name1');
             $table->string('image');
-            $table->integer('price1');
+            $table->integer('price');
+            $table->integer('available');
 
             $table->timestamps();
         });

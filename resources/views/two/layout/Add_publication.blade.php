@@ -10,14 +10,14 @@
     
   </head> 
   
-  <body >
+  <body  style="margin-top: 5rem;">
   
   
-  <main class="col-md-10 ms-sm-auto col-lg-60 px-md-90">
+  <!-- <main class="col-md-10 ms-sm-auto col-lg-60 px-md-90">  -->
   
   <div style="margin-left: 2rem; margin-top:7 rem;" > 
   <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  publication
+  return
 </button>
 
    <!-- Modal  -->
@@ -34,19 +34,26 @@
         @csrf
   
   <div class="mb-3">
-    <label for="exampleInputBook_Name" class="form-label">Writer_Name</label>
+    <label for="exampleInputBook_Name" class="form-label">student_Name</label>
     <input type="text" class="form-control" name="Writer_Name" id="exampleInputBook_Name">
 
     
     
   </div>
+
+
   <div class="mb-3">
     <label for="exampleInputWriter_Name" class="form-label">book_name</label>
     <input type="text" class="form-control" name="book_name" id="exampleInputWriter_Name">
   </div>
 
   <div class="mb-3">
-    <label for="exampleInputWriter_Name" class="form-label">quantity</label>
+    <label for="exampleInputWriter_Name" class="form-label">s-id</label>
+    <input type="integer" class="form-control" name="sid" id="exampleInputWriter_Name">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputWriter_Name" class="form-label">delivary date</label>
     <input type="text" class="form-control" name="quantity" id="exampleInputWriter_Name">
   </div>
 
@@ -66,8 +73,8 @@
   </div>
   
   <div class="mb-3">
-    <label for="exampleInputPublisher_Name" class="form-label">price </label>
-    <input type="integer" class="form-control" name="price" id="exampleInputPublisher_Name">
+    <label for="exampleInputPublisher_Name" class="form-label">return date </label>
+    <input type="text" class="form-control" name="price" id="exampleInputPublisher_Name">
   </div>
 
   
@@ -91,13 +98,14 @@
   <thead>
     <tr>
     <th scope="col">#</th>
-      <th scope="col">Writer_Name</th>
+      <th scope="col">student name</th>
+      <th scope="col">s-id</th>
       <th scope="col">book_name</th>
-      <th scope="col">quantity</th>
+      <th scope="col">delivery date</th>
       
       <th scope="col">publication</th>
       <th scope="col">image</th>
-      <th scope="col">price</th>
+      <th scope="col">return date</th>
       
       <th scope="col">Action</th>
      
@@ -109,6 +117,7 @@
     <tr>
       <th>{{$key+1}}</th>
       <td>{{$re->Writer_Name}}</td>
+      <td>{{$re->sid}}</td>
       <td>{{$re->book_name}}</td>
       <td>{{$re->quantity}}</td>
       

@@ -1,9 +1,22 @@
 @extends('two.layout.backend1')
-@section('content')
 
 
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <title>Bootstrap demo</title>
+    
+  </head> 
+  
+  <body  style="margin-left: 3rem; margin: top 20%;">
+  
+   <!-- <main class="col-md-10 ms-sm-auto col-lg-60 px-md-90">   -->
  <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="margin-top: 2rem;">
   Add sub Self
 </button>
 
@@ -83,7 +96,7 @@ choose Book_Title
 </div>
 
 <hr>
-<table class="table" width="">
+<table class="table" id="myTable" width="">
   <thead>
     <tr>
     <th scope="col">#</th>
@@ -116,8 +129,22 @@ choose Book_Title
     @endforeach
 
    
-  </tbody>
-  
+    </tbody>
+  </thead>
 </table>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><br><br>
+  <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+  <script>
 
- @endsection
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+  </script>
+   </main>
+   </div>
+  </body>
+  
+ </html> 
+
+
+ 

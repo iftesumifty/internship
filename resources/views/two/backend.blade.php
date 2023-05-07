@@ -7,8 +7,8 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-<a  href="{{route('dashboard')}}">User</a>
-<a  href="{{route('message')}}">messages</a>
+<a  href="{{route('dashboard')}}">U</a>
+<a  href="{{route('message')}}">m</a>
 
 
        
@@ -51,7 +51,7 @@
           </div>
           <div class="col-md-3 mb-3">
             <div class="card bg-danger text-white h-100">
-              <div class="card-body py-5">{{$order}}</div>
+              <div class="card-body py-5">{{$order11}}</div>
               <div class="card-footer d-flex">
                 Total Order
                 <span class="ms-auto">
@@ -60,11 +60,25 @@
               </div>
             </div>
             </div>
+
+            <div class="col-md-3 mb-3">
+            <div class="card bg-danger text-white h-100">
+              <div class="card-body py-5">{{$choice}}</div>
+              <div class="card-footer d-flex">
+                Total sell book
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+            </div>
+
+
             <div class="col-md-3 mb-3">
             <div class="card bg-success text-white h-100">
               <div class="card-body py-5">{{$re}}</div>
               <div class="card-footer d-flex">
-                Total publisher
+                Total return
                 <span class="ms-auto">
                   <i class="bi bi-chevron-right"></i>
                 </span>

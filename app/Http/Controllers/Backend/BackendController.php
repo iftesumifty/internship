@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\submitmail;
 use App\Models\category;
 use App\Models\choice;
+use App\Models\fine;
 use App\Models\layout;
 use App\Models\message;
 use App\Models\order;
+use App\Models\order11;
 use App\Models\product;
 use App\Models\product1;
 use App\Models\re;
@@ -19,6 +22,7 @@ use App\Models\User;
 use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class BackendController extends Controller
@@ -36,7 +40,8 @@ class BackendController extends Controller
 public function pub_delete( $id)
 {
     $res = re::find($id)->delete();
-    return redirect()->back();
+    // return redirect()->back() ;
+    return redirect()->route('ADD_PUBLICATION')->with('message'," deleted Successful");
 }
 
     public function pubcreate(Request $request)
@@ -54,6 +59,7 @@ public function pub_delete( $id)
         re::create([
 
             'Writer_Name' => $request->Writer_Name,
+            'sid'=>$request->sid,
             'book_name' => $request->book_name,
             'quantity' => $request->quantity,
             'publication' => $request->publication,
@@ -62,7 +68,8 @@ public function pub_delete( $id)
 
 
         ]);
-        return back();
+        // return back();
+        return redirect()->route('ADD_PUBLICATION')->with('message'," created Successful");
     }
     //edit pub
     public function pubcreate_edit($id)
@@ -103,26 +110,35 @@ public function pub_delete( $id)
         );
 
 
-        if (Auth::attempt($user))
-
-            $roll_id = Auth::user()->roll_id;
-        if ($roll_id == 1) {
-        $product=product::all()->count();
+        if (Auth::attempt($user)){
+            if( Auth::user()->roll_id==1){
+                $product=product::all()->count();
 
 $category=category::all()->count();
 $re1 = re1::all()->count();
-$order =order::all()->count();
+$order11 =order11::all()->count();
 $re=re::all()->count();
+$choice=choice::all()->count();
+            return view('two.backend',compact('product','category','re1','order11','re','choice'));
+            
 
-            return view('two.backend',compact('product','category','re1','order','re'));
+            }
+
         }
 
-        if ($roll_id == 2) {
+        if (Auth::attempt($user)){
+            if( Auth::user()->roll_id==2){
+        
+        
             $product1s = product1::all();
             return view('onefolder.product1view.view',compact('product1s'));
-        } else {
+        } 
+         }
+        else {
             return redirect()->back();
         }
+
+
     }
 
 
@@ -152,9 +168,10 @@ public function logout1(Request $request)
         $category = category::all()->count();
         //dd($users);
         $re1 = re1::all()->count();
-        $order =order::all()->count();
+        $order11 =order11::all()->count();
         $re=re::all()->count();
-        return view('two.backend',compact('product','category','re1','order','re'));
+        $choice=choice::all()->count();
+        return view('two.backend',compact('product','category','re1','order11','re','choice'));
     }
 
     //add book for self info
@@ -163,6 +180,10 @@ public function logout1(Request $request)
         $layouts = layout::all();
         // $users =User::all();
         return view('two.layout.ADD_BOOK', compact('layouts'));
+        {
+            return redirect()->route('ADD_BOOK')->with('message'," created Successful");
+        }
+        
     }
 
     public function book_edit($id)
@@ -175,13 +196,13 @@ public function logout1(Request $request)
     {
 
         layout::find($id)->update([
-            'Book_Name' => $res->Book_Name,
+            'name' => $res->name,
             'Writer_Name' => $res->Writer_Name,
             'Department_Name' => $res->Department_Name,
             'Available' => $res->Available,
         ]);
 
-        return redirect()->route('ADD_BOOK');
+        return redirect()->route('ADD_BOOK')->with('message'," update Successful");
     }
 
     public function ADD_BOOKdelete(Request $request, $id)
@@ -208,7 +229,8 @@ public function logout1(Request $request)
             'Available' => $request->Available,
 
         ]);
-        return back();
+        // return back();
+        return redirect()->route('ADD_BOOK')->with('message'," created Successful");
     }
 
 
@@ -270,17 +292,18 @@ $layout=layout::find($id);
         //dd($request->all());
         product::create([
 
-            'Book_Naaame' => $request->Book_Naaame,
+            
             'name' => $request->name,
             'Book_Name' => $request->Book_Name,
             'Writer_Name' => $request->Writer_Name,
 
             'Publisher_Name' => $request->Publisher_Name,
             'Available' => $request->Available,
-            'price' => $request->price,
+            
 
         ]);
-        return back();
+        // return back();
+        return redirect()->route('product_list')->with('message'," created Successful");
     }
     //product edit
     public function edit_pro($id)
@@ -294,25 +317,26 @@ $layout=layout::find($id);
     {
 
         product::find($id)->update([
-            'Book_Naaame' => $res->Book_Naaame,
+            
             'name' => $res->name,
             'Book_Name' => $res->Book_Name,
             'Writer_Name' => $res->Writer_Name,
 
             'Publisher_Name' => $res->Publisher_Name,
             'Available' => $res->Available,
-            'price' => $res->price,
+           
 
 
         ]);
 
-        return redirect()->route('product_list');
+        return redirect()->route('product_list')->with('message'," update Successful");
     }
     public function pro_list_delete($id)
     {
         $product = product::find($id)->delete();
         //$product = product::find($id)->delete();
-        return redirect()->back();
+        // return redirect()->back();
+        return redirect()->route('product_list')->with('message'," deleted Successful");
     }
 
 
@@ -346,14 +370,15 @@ $layout=layout::find($id);
             'address' => $res->address,
         ]);
 
-        return redirect()->route('student');
+        return redirect()->route('student')->with('message'," update Successful"); 
     }
 
     public function user_delete($id)
     {
         $user = User::find($id)->delete();
         //$product = product::find($id)->delete();
-        return redirect()->back();
+        // return redirect()->back();
+        return redirect()->route('student')->with('message'," deleted Successful");
     }
  
 
@@ -564,7 +589,9 @@ $layout=layout::find($id);
 
 
         ]);
-        return back();
+        // return back();
+        return redirect()->route('return')->with('message'," created Successful");
+
     }
 
     public function edit_return($id)
@@ -606,7 +633,9 @@ $layout=layout::find($id);
     public function return_delete( $id)
     {
         $re1 = re1::find($id)->delete();
-        return redirect()->back();
+        // return redirect()->back();
+        return redirect()->route('return')->with('message'," deleted Successful");
+
     }
 
 
@@ -627,8 +656,8 @@ $layout=layout::find($id);
     public function order1()
     {
 
-         $orders =order::all();
-        return view('two.layout.order.order1', compact('orders'));
+         $order11s =order11::all();
+        return view('two.layout.order.order1', compact('order11s'));
     }
     public function suborder_delete( $id)
     {
@@ -668,38 +697,127 @@ $layout=layout::find($id);
             'name' => $request->name,
             'name1' => $request->name1,
             'image' => $filename,
-            'price1' => $request->price1,
+            'price' => $request->price,
+            'available' => $request->available,
         ]);
-        return back();
+        // return back();
+        return redirect()->route('ch')->with('message'," created Successful");
     }
     public function choice1( $id)
     {
         $choice = choice::find($id)->delete();
-        return redirect()->back();
+        // return redirect()->back();
+        return redirect()->route('ch')->with('message'," deleted Successful");
     }
     //for message
     public function message( )
     {
-       return view('two.layout.message.list');
+        
+        
+        return view('two.layout.message.list');
     }
     
     public function messagepass(Request $request )
     {
-
-        message::create([
+        $message=message::all();
+    
+message::create([
 
             'name' => $request->name,
             'email' => $request->email,
            
             'subject' => $request->subject,
-            'message' => $request->message,
+           
+        ]);
+        
+        $email = $request->input('email');
+        $message = $request->input('message');
+
+         $data=$request->all();
+// $data=new message($name,$email,$message);
+        Mail::to($email )->send(new submitmail($data));
+        // toastr()->success('thank you','successful',['timeout'=>2000]);
+        // return redirect()->route('submitmail');
+        // return back();
+        return redirect()->route('message')->with('message'," message pass Successfully");
+        
+    }
+//fimes
+    public function fineee()
+    {
+        $fines=fine::all();
+        return view('two.two2.fines',compact('fines'));
+    }
+
+    public function fine_add(Request $request)
+    {
+
+        fine::create([
+
+            'name' => $request->name,
+            'code' => $request->code,
+            'name1' => $request->name1,
+            'total' => $request->total,
+            
+
+
+
         ]);
         return back();
-      
     }
+
+
+    //product edit
+    public function edit_fine($id)
+    {
+
+        $fine = fine::find($id);
+        return view('two.two2.fineedit', compact('fine'));
+    }
+
+    public function update_fine(Request $res, $id)
+    {
+
+        fine::find($id)->update([
+            'name' => $res->name,
+            
+            'code' => $res->code,
+            'name1' => $res->name1,
+
+            'total' => $res->total,
+           
+        ]);
+
+        return redirect()->route('fineee');
+    }
+    public function fine_delete($id)
+    {
+        $fine = fine::find($id)->delete();
+        //$product = product::find($id)->delete();
+        return redirect()->back();
+    }
+
+
+
+    //pyment
+    public function py()
+    {
+        $orders=order::all();
+        return view('two.two2.pyment',compact('orders'));
+    }
+
+    public function py_delete($id)
+    {
+        $order = order::find($id)->delete();
+        //$product = product::find($id)->delete();
+        return redirect()->back();
+    }
+
+}
+
 
    
 
 
 
-}
+

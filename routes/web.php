@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -75,14 +76,13 @@ Route::post('product1/add',[BackendController::class,'product1_add'])->name('pro
 //for return book
 Route::get('return',[BackendController::class,'return'])->name('return');
 Route::post('re1',[BackendController::class,'re1'])->name('re1');
+//fines
 
-
-//for messagemessage1
-Route::get('message1',[BackendController::class,'message'])->name('message');
- Route::post('mes1',[BackendController::class,'messagepass'])->name('messagepass');
-
-
-
+Route::get('/fine1',[BackendController::class,'fineee'])->name('fineee'); 
+Route::post('fine/add',[BackendController::class,'fine_add'])->name('fine_add'); 
+Route::get('edit/fine/{id}',[BackendController::class,'edit_fine'])->name('edit_fine'); 
+Route::put('/update/fine/{id}',[BackendController::class,'update_fine'])->name('update_fine');
+Route::get('finedelete/{id}',[BackendController::class,'fine_delete'])->name('fine_delete'); 
 
 });
 
@@ -110,22 +110,22 @@ Route::put('/update/book1/{id}',[BackendController::class,'update_book1'])->name
 //for product delete
 Route::get('/pro/delete/{id}',[BackendController::class,'pro_delete'])->name('pro_delete'); 
 
-//for view
-Route::get('/view/{id}',[FrontendController::class,'view'])->name('view');
+// view page help to back from every frontend page
+Route::get('/view',[FrontendController::class,'view'])->name('view');
 
 //forcart in book
 Route::get('/for/{id}',[FrontendController::class,'for'])->name('for');
 
- //for add to cart button route
+ //for add to cart button route cutttttttttttttttt
  Route::get('/cart/add/{id}',[FrontendController::class,'cart_add'])->name('cart_add'); 
  Route::get('/cart/list',[FrontendController::class,'cart_list'])->name('cart_list'); 
  Route::get('/checkout',[FrontendController::class,'checkout'])->name('checkout'); 
+ 
  Route::post('/placeorder',[FrontendController::class,'placeorder'])->name('placeorder'); 
- //forfrontend user
- Route::get('/userchoice1',[FrontendController::class,'userchoice'])->name('userchoice'); 
+ 
 
-
-
+//frontend fine
+Route::get('/finess',[FrontendController::class,'fine'])->name('fine'); 
 
 
 //for thank
@@ -158,9 +158,33 @@ Route::get('logout',[BackendController::class,'logout'])->name('logout');
 Route::get('logout1',[BackendController::class,'logout1'])->name('logout1');
 
 //for userchoiceview file
+//forfrontend user
+Route::get('/userchoice1',[FrontendController::class,'userchoice'])->name('userchoice'); 
 Route::get('details/{id}',[FrontendController::class,'details1'])->name('details1'); 
 Route::get('buy',[FrontendController::class,'buy'])->name('buy'); 
 Route::get('/cart/add1/{id}',[FrontendController::class,'cart_add1'])->name('cart_add1'); 
  Route::get('/cart/list1',[FrontendController::class,'cart_list1'])->name('cart_list1'); 
+ Route::get('/checko',[FrontendController::class,'checkout1'])->name('checkout1'); 
 
 
+ //for fine
+ 
+//for messagemessage1
+ Route::get('message1',[BackendController::class,'message'])->name('message');
+ Route::post('mes1',[BackendController::class,'messagepass'])->name('messagepass');
+
+ // SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout'])->name('exampleEasyCheckout');
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('index');
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax'])->name('payViaAjax');
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
+Route::get('pyment',[BackendController::class,'py'])->name('py');
+Route::get('/py/delete/{id}',[BackendController::class,'py_delete'])->name('py_delete'); 

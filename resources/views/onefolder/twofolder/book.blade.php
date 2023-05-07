@@ -1,5 +1,5 @@
 @extends('onefolder.master')
-@section('content')<br><br>
+@section('content')<br><br><br><br>
 
 
 <!doctype html>
@@ -11,61 +11,75 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
     <title>Bootstrap demo</title>
     
-  </head>
+  </head> 
   
   <body>
-  <main class="col-md-10 ms-sm-auto col-lg-60 px-md-90"><br><br><br><br>
-  <li class="nav-item">
-            <a class="nav-link active ,btn btn-dark" aria-current="page" href="{{route('cart_list')}}">student add to cart({{count(Cart::content())}})</a>
-          </li>
-  
-  <!-- Modal -->
+  <main  style="margin-left: 02rem;">
+ <!-- Button trigger modal -->
+
+<!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New prodect</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
       
-      <form action="{{route('pubcreate')}}"method="post" enctype="multipart/form-data">
+      <form action="{{route('product1_add')}}" method='post'>
         @csrf
   
   <div class="mb-3">
-    <label for="exampleInputBook_Name" class="form-label">Writer_Name</label>
-    <input type="text" class="form-control" name="Writer_Name" id="exampleInputBook_Name">
-
+    <label for="exampleInputBook_Name" class="form-label">self_no</label>
     
-    
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputWriter_Name" class="form-label">book_name</label>
-    <input type="text" class="form-control" name="book_name" id="exampleInputWriter_Name">
+<select name="self_no" class="form-control" id="exampleInputPublisher_Name">
+<option>
+
+choose self no...
+</option>
+@foreach($categories as $category)
+<option value="{{$category->id}}">{{$category->self_no}}
+
+
+</option>
+@endforeach
+</select>
   </div>
 
   <div class="mb-3">
-    <label for="exampleInputWriter_Name" class="form-label">quantity</label>
-    <input type="text" class="form-control" name="quantity" id="exampleInputWriter_Name">
+    <label for="exampleInputBook_Name" class="form-label">Book_Title</label>
+    
+<select name="Book_Title" class="form-control" id="exampleInputPublisher_Name">
+<option>
+
+choose Book_Title
+</option>
+@foreach($subcategories as $subcategory)
+<option value="{{$subcategory->id}}">{{$subcategory->Book_Title}}
+
+
+</option>
+@endforeach
+</select>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputWriter_Name" class="form-label">Course_Name </label>
+    <input type="text" class="form-control" name="Course_Name" id="exampleInputWriter_Name">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputWriter_Name" class="form-label">Edition </label>
+    <input type="text" class="form-control" name="Edition" id="exampleInputWriter_Name">
   </div>
   
+  <div class="mb-3">
+    <label for="exampleInputPublisher_Name" class="form-label">Writer_Name </label>
+    <input type="text" class="form-control" name="Writer_Name" id="exampleInputPublisher_Name">
+  </div>
+
   
-  <div class="mb-3">
-    <label for="exampleInputPublisher_Name" class="form-label">publication </label>
-    <input type="text" class="form-control" name="publication" id="exampleInputPublisher_Name">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPublisher_Name" class="form-label">price </label>
-    <input type="integer" class="form-control" name="price" id="exampleInputPublisher_Name">
-  </div>
-  <div class="mb-3">
-
-
-
-    <label for="exampleInputPublisher_Name" class="form-label">profile </label>
-    <input type="file" class="form-control" name="image" id="exampleInputPublisher_Name">
-  </div>
-
   
 
       </div>
@@ -79,54 +93,41 @@
 </div>
 
 <hr>
-  
-    
-
-
-  <table class="table" id="myTable" width="">
+<table class="table" id="myTable" width="">
   <thead>
     <tr>
     <th scope="col">#</th>
+      <th scope="col">self_no</th>
+      <th scope="col">Book_Title</th>
+      <th scope="col">Course_Name</th>
+      
       <th scope="col">Writer_Name</th>
-      <th scope="col">book_name</th>
-      <th scope="col">quantity</th>
-      <th scope="col">publication</th>
-
-      <th scope="col">image</th>
-      <th scope="col">price</th>
-      <th scope="col">Action</th>
+      <th scope="col">Edition</th>
      
-      
-      
     </tr>
-<tbody>
-    @foreach($res as $key=>$re)
+  </thead>
+  <tbody>
+  
+  
+  @foreach($product1s as $key=> $ifty)
     <tr>
       <th>{{$key+1}}</th>
-      <td>{{$re->Writer_Name}}</td>
-      <td>{{$re->book_name}}</td>
-      <td>{{$re->quantity}}</td>
-      <td>{{$re->publication}}</td>
       
-      <td>
+      <td>{{$ifty->category->self_no}}</td>
+      <td>{{$ifty->subcategory->Book_Title}}</td>
+      <td>{{$ifty->Course_Name}}</td>
       
-      <img src="{{asset('/uploads/profile/'.$re->image)}}"  height="50" weight="50" />
-      
-
-      </td>
-      <td>{{$re->price}}</td>
-
-      <td>
-      <a href="{{route('for',$re->id)}}" class="btn btn-primary mt-3">view details</a>
-      </td>
-     
-      
+      <td>{{$ifty->Writer_Name}}</td>
+      <td>{{$ifty->Edition}}</td>
+         
     </tr>
     @endforeach
+
+   
     </tbody>
   </thead>
 </table>
-<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script><br><br>
   <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
   <script>
 
@@ -134,9 +135,13 @@ $(document).ready( function () {
     $('#myTable').DataTable();
 } );
   </script>
-    </main>
+   </main>
+   </div>
   </body>
   
-</html>
+ </html> 
+<div class="" style="text-align: center;">
+<a href="{{route('view')}}">Back home page</a>
+</div><br>
 
 @endsection

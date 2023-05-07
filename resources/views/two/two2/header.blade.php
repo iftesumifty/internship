@@ -298,9 +298,30 @@ text-decoration-color: black;
         
         </div>
       </div>
+
+      <div>
+         @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
+         </div>
+
+
+      <div style="display:flex; ">
+      <a class="nav-link" style="color: black;" href="{{route('message')}}" class="nav_link active">Message</a>
+      <a class="nav-link" style="color: black;" href="{{route('fineee')}}" class="nav_link active">Fine</a>
+      <a class="nav-link" style="color: black;" href="{{route('py')}}" class="nav_link active">Payment List</a>
+     
+      </div>
+
+      <div>
+    
+      </div>
       <div class="header_img">
       <a class="nav-link px-100 " style="color:aqua;" href="{{route('logout')}}">logout</a>
       </div>
+      
 
 
     </header>

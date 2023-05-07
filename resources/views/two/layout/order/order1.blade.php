@@ -14,7 +14,7 @@
   <body >
   
   
-  <main class="col-md-10 ms-sm-auto col-lg-60 px-md-90">
+  <!-- <main class="col-md-10 ms-sm-auto col-lg-60 px-md-90"> -->
   
   <div style="margin-left: 2rem; margin-top:7 rem;" > 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -88,7 +88,7 @@
     <th scope="col">#</th>
     
       <th scope="col">name</th>
-      <th scope="col">Book name</th>
+      
       <th scope="col">email</th>
       <th scope="col">phone</th>
       <th scope="col">address </th>
@@ -100,21 +100,21 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($orders  as $key=>$order )
+    @foreach($order11s  as $key=>$order11 )
     <tr>
       <th>{{$key+1}}</th>
-      <td>{{$order->name}}</td>
-      <td>{{$order->name1}}</td>
-      <td>{{$order->email}}</td>
-      <td>{{$order->phone}}</td>
-      <td>{{$order->address}}</td>
-      <td>{{$order->total}}</td>
+      <td>{{$order11->name}}</td>
+     
+      <td>{{$order11->email}}</td>
+      <td>{{$order11->phone}}</td>
+      <td>{{$order11->address}}</td>
+      <td>{{$order11->total}}</td>
       
       
     
       <td>
         
-        <a class="btn-btn-danger" href="{{route('order_delete',$order->id)}}" role="buttton">Delete</a>
+        <a class="btn-btn-danger" href="{{route('order_delete',$order11->id)}}" role="buttton">Delete</a>
       </td>
 
 

@@ -79,15 +79,15 @@
        
             <a href="{{route('return')}}" class="nav_link">
               <i class="bx bx-folder nav_1icon"></i>
-              <span data-feather="file-text " class="align-text-bottom"> Return book</span>
+              <span data-feather="file-text " class="align-text-bottom"> Borrow book</span>
             </a> 
             <a href="{{route('ADD_PUBLICATION')}} " class="nav_link">
               <i class="bx bx-bar-chart-alt-2 nav_1icon"></i>
-              <span data-feather="file-text " class="align-text-bottom"> purchases </span>
+              <span data-feather="file-text " class="align-text-bottom"> return book </span>
             </a>
             <a href="{{route('ch')}} " class="nav_link">
               <i class="bx bx-bar-chart-alt-2 nav_1icon"></i>
-              <span data-feather="file-text " class="align-text-bottom"> choice publication</span>
+              <span data-feather="file-text " class="align-text-bottom"> choice sell</span>
             </a>
 
         

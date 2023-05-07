@@ -10,10 +10,10 @@
     
   </head> 
   
-  <body >
+  <body  style="margin-top: 5rem;">
   
   
-  <main class="col-md-10 ms-sm-auto col-lg-60 px-md-90" style="margin-left: 3rem;"> 
+  <!-- <main class="col-md-10 ms-sm-auto col-lg-60 px-md-90" style="margin-left: 3rem;">  -->
   
   <div style="margin-left: 2rem; margin-top:7 rem;" > 
   <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -58,10 +58,13 @@
  
   <div class="mb-3">
     <label for="exampleInputPublisher_Name" class="form-label">price </label>
-    <input type="integer" class="form-control" name="price1" id="exampleInputPublisher_Name">
+    <input type="integer" class="form-control" name="price" id="exampleInputPublisher_Name">
   </div>
 
-  
+  <div class="mb-3">
+    <label for="exampleInputPublisher_Name" class="form-label">available </label>
+    <input type="integer" class="form-control" name="available" id="exampleInputPublisher_Name">
+  </div>
 
       </div>
       <div class="modal-footer">
@@ -88,7 +91,7 @@
       <th scope="col">image</th>
      
       <th scope="col">price</th>
-      
+      <th scope="col">Available</th>
       <th scope="col">Action</th>
      
       
@@ -108,9 +111,11 @@
       
 
       </td>
-      <td>{{$choice->price1}}</td>
+      <td>{{$choice->price}}</td>
+      <td>{{$choice->available}}</td>
       
       <td>
+
  <a class="btn-btn-danger" href="{{route('choice1',$choice->id)}}" role="buttton">Delete</a> 
         
       </td>

@@ -8,13 +8,13 @@
 
   <header>
     <hgroup>
-      <h1>Book Name:{{$choices->name}}</h1>
+      <h1>Book Name:{{$choice->name}}</h1>
       <h4></h4>
     </hgroup>
   </header>
  
   <figure>
-    <img src="{{asset('/uploads/profile/'.$choices->image)}}"height="550",weight="550">
+    <img src="{{asset('/uploads/profile/'.$choice->image)}}"height="550",weight="550">
   </figure>
  
   <section>
@@ -24,17 +24,18 @@
   <details>
    <summary>Product Features</summary>
       <ul>
-        <li>writter name:{{$choices->name1}}</li>
-        <li>publication:dhurbo</li>
-        <li>book name:{{$choices->name}}</li>
-        <li>price{{$choices->price1}}</li>
+        <li>writter name:{{$choice->name1}}</li>
+        <li>quantity:{{$choice->available}}</li>
+       
+        <li>book name:{{$choice->name}}</li>
+        <li>price:{{$choice->price}}</li>
        
         <li>Photo and video geotagging</li>
       </ul>
   </details>
  
-  <button >Buy Now</button>
-  <a href="{{route('buy')}}" class="btn btn-dark">Buy Now</a>
+  
+  <a href="{{route('cart_add1',$choice->id)}}" class="btn btn-dark">Add to cart</a>
  
  
   </section>
@@ -42,5 +43,8 @@
 </div>
 </main>
 
+<div class="" style="text-align: center;">
+<a href="{{route('userchoice')}}">Back list page</a>
+</div><br>
 
 @endsection
